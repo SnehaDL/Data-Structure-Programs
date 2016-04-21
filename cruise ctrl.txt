@@ -1,0 +1,94 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<time.h>
+
+int main()
+{
+ int ch,n,c=10,i;
+ char cr;
+ printf("Enter max speed :  ",n);
+ scanf("%d",&n);
+ while(1)
+ {
+   
+   printf("\n\t\tCHOICES\n\t\t~~~~~~~\n\t1.Accelerate\n\t2.Break\n\tc.To switch\t3.Exit\nEnter your choice :  ");
+   scanf("%d",&ch);
+   switch(ch)
+   {
+    case 1:
+      
+	  while( c < n)
+       {
+	             sleep(1000);
+	       
+              printf("Increasing the speed: %d\n", c);
+	          c = c + 10;
+	          scanf("%c", &cr);
+	          if(cr == 'c')
+	             {     printf("switching---------------\n");
+                       break;
+                       }
+              else
+                  {
+                       printf("\n");
+                       }
+           }
+           
+         if ( c >= n)
+          {
+          printf("Increasing the speed: %d\n", c);
+          printf("Already have reached the max speed%d\n", c);
+	      break;
+       }
+       else
+       {
+           break;
+           }
+
+    case 2:
+	  while(10 < c )
+       {
+	          sleep(1000);
+	          c = c - 10;
+	          printf("Decreasing the speed: %d\n", c);
+	       
+	          
+        scanf("%c", &cr);
+	          if(cr == 'c')
+	             {
+                       printf("switching---------------\n");
+                       break;
+                       }
+              else
+                  {
+                       printf("\n");
+                       }
+           
+           } 
+         if ( c <= 10)
+         {
+         
+       printf("Already have reached the min speed%d\n", c);
+	   break;
+
+       }
+       
+       else
+       {
+           break;
+           }
+
+
+    case 3:
+	  exit(0);
+
+    default:
+	  printf("\tIt is Wrong choice,Please enter correctchoice!............\n");
+    }
+   getch();
+  }
+}
+
+ 
+

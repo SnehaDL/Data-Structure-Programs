@@ -1,0 +1,111 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{ int n,i,et[100],st[100],wt[100],a[100],b[100],time_cons=0,  sum=0,total_tt=0,val[100], total_wt=0;
+float avg_tt, avg_wt;
+  
+  printf("enter the number of processe\n");
+  scanf("%d",&n);
+  printf("enter the arrival time of processe\n");
+  for(i =0; i<n; i++)
+          {
+                scanf("%d", &a[i]);
+            }
+  printf("enter the burst time of processe\n");
+  
+  for(i=0; i<n; i++)
+            {
+                scanf("%d", &b[i]);
+                
+            }  
+            
+            
+  for(i=0; i<n; i++)
+            {
+                
+                sum = sum + b[i];
+            
+               
+                }
+ 
+  //assigning values
+  int k=0, f[100];
+  for(i=0; i <n; i++)
+  {
+           f[i] = 0;
+           val[i]=0;
+           et[i]=0;
+           }
+           
+           
+           
+  while(time_cons<sum)
+  {
+  for(i =0; i<n;i++)
+        {
+            if((time_cons>=a[i])&&(b[i]>0)&&(f[i]==0))
+                                 {
+                                      st[i]=time_cons;
+                                      f[i]=1;
+                                      }
+              
+           
+              if((time_cons>=a[i])&&(b[i]>0))
+                                 {    printf("end = %d\n", et[i]);
+                                      printf("t = %d\n", time_cons);
+                                 
+                                      val[i] = val[i] + (time_cons-et[i]);
+                                      time_cons= time_cons+1;
+                                      b[i]= b[i]-1;
+                                      et[i]=time_cons;
+                                      printf("val = %d\n", val[i]);
+                                      
+                                        }
+                                      
+                                      }
+                                      
+}                                   
+  
+  for(i=0; i <n; i++)
+  {       
+          val[i]= val[i]-a[i];
+          printf("val =%d", val[i]);
+           }
+  
+ 
+                                                                    
+ //printing the start time
+    for (i=0; i< n; i++)
+   {
+       printf("start for %d is %d\n",(i+1), st[i]);
+       }
+   
+   
+   
+   //printing the tt time for each 
+   for (i=0; i< n; i++)
+   {
+       printf("turn arnd time for %d is %d\n", (i+1), (et[i]-a[i]));
+       total_tt= total_tt + (et[i]-a[i]);
+       }
+       
+       
+       avg_tt = total_tt/n;
+       printf("avg turn arnd time is %f\n", avg_tt);
+       
+       
+       
+       //printing the wt time for each 
+   for (i=0; i< n; i++)
+   {
+       printf("waiting time for %d is %d\n", (i+1),val[i] );
+       total_wt= total_wt + val[i];
+       }
+       
+       
+       avg_wt = total_wt/n;
+       printf("avg weight time is %f\n", avg_wt);
+   
+       getch();
+       }

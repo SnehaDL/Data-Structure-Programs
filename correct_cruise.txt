@@ -1,0 +1,119 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<time.h>
+
+int main()
+{
+ int ch,n,c=10,i;
+ char cr;
+ printf("Enter max speed :  ",n);
+ scanf("%d",&n);
+ while(1)
+ {
+   
+   printf("\n\t\tCHOICES\n\t\t~~~~~~~\n\t1.Accelerate\n\t2.Break\n\tc.To switch\t3.Exit\nEnter your choice :  ");
+   scanf("%d",&ch);
+   int take = 1;
+   
+   while(take == 1)
+   {
+   switch(ch)
+   {
+    case 1:
+      
+	  while( c < n)
+       {
+	             sleep(500);
+	       
+              printf("Increasing the speed: %d\n", c);
+	          c = c + 10;
+	          scanf("%c", &cr);
+	          if(cr == 'c')
+	             {     printf("switching from Acce to Break---------------\n");
+	                   ch = 2;
+                       take = 1;        
+                       break;
+                       }
+              else
+                  {
+                       printf("\n");
+                       }
+           }
+           
+         if ( c >= n)
+          {
+          printf("Increasing the speed: %d\n", c);
+          printf("Already have reached the max speed%d\n", c);
+          take = 2;
+	      break;
+       }
+       else
+       {
+           break;
+           }
+
+    case 2:
+	  while(10 < c )
+       {
+	          sleep(500);
+	          c = c - 10;
+	          printf("Decreasing the speed: %d\n", c);
+	       
+	          
+        scanf("%c", &cr);
+	          if(cr == 'c')
+	             {     char ask = 'y';
+                       printf("Before releasing breakaccelerate is NOT POSSIBLE!!\n");
+                       printf("___________________________");
+                       printf("\n");
+                       printf("You want to release break?\n");
+                       scanf("%s", &ask);
+                       sleep(3000);
+                       if (ask == 'y')
+                       {
+                          printf("switching to accelerator---------------\n");
+                          ch = 1;
+                          take = 1;
+                          break;
+                          }
+                       else
+                       {
+                       
+                            printf("Sorry! You cant apply both..Continuing with break\n");
+                       }
+                       }
+              else
+                  {
+                       printf("\n");
+                       }
+           
+           } 
+         if ( c <= 10)
+         {
+         
+       printf("Already have reached the min speed%d\n", c);
+       take = 2;
+	   break;
+
+       }
+       
+       else
+       {
+           break;
+           }
+
+
+    case 3:
+	  exit(0);
+
+    default:
+	  printf("\tIt is Wrong choice,Please enter correctchoice!............\n");
+    }
+}
+
+   getch();
+  }
+}
+
+ 

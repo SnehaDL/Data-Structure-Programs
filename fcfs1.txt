@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+ int n, t[100],i, tt[100],arr=0, wt[100], time_cons = 0, st[100], et[100], t_total = 0, w_total = 0 ;
+ printf("enter the number of processes\n");
+ scanf("%d",&n);
+ printf("enter the burst for each\n");
+ for ( i = 0; i < n; i++)
+     {
+         
+         scanf("%d",&t[i]);
+         }
+ 
+ for(i = 0; i < n; i ++)
+       {
+            st[i] = time_cons;
+            time_cons = time_cons + t[i];
+            et[i] = time_cons;
+            }
+ 
+ for (i =0; i < n; i ++)
+ {
+     tt[i] = et[i] - arr;
+     t_total = t_total + tt[i];
+     
+     }
+ printf("Total turn arround time = %d seconds\n", t_total);
+ float val = 0.00;
+ val = (t_total/n) ;
+  printf("Average turn arround time = %f seconds\n", val);
+
+ 
+ for (i =0; i < n; i ++)
+ {
+     wt[i] = st[i];
+     w_total = w_total + wt[i];
+     
+     }
+ printf("Total waiting time = %d seconds\n", w_total);
+ val = (w_total/n) ;
+  printf("Average waiting time = %f seconds\n", val);
+  
+  getch();
+}

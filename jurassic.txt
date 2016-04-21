@@ -1,0 +1,100 @@
+#include<stdio.h>
+#include<conio.h>
+
+int main()
+{
+ int car[10][10],pass,w_pass,m,n,i,j,w_cars=0, ocars=0,c=0,ch1,checkif;
+ printf("enter the cars\n");
+ scanf("%d",&m);
+ printf("enter the passngrs\n");
+ scanf("%d",&n);
+ 
+ for(i=0;i<m;i++)
+ 	{
+ 		car[i][0]=0;
+ 		car[i][1]=0;
+ 		}
+ if(m<n) 
+ 	{ 
+ 		w_pass = n-m;
+ 		for (i=0; i<n;i++)
+ 			{
+ 				car[i][0] = 1;
+ 				}
+ 				}
+ else
+ 	{
+ 		w_pass = 0;
+ 		for(i=0;i<n;i++)
+ 			{
+ 				car[i][0] = 1;
+ 				}
+ 				}
+
+
+ for(i=0;i<n;i++)
+ 	{
+ 		if(car[i][0]==0)
+ 			{
+				w_cars++;
+				}
+				}
+	printf("No of waiting passengers = %d\n, No of cars left = %d\n", w_pass, w_cars);
+	w_cars = 0;
+	
+	do
+		{
+			c++;
+			for(i=0;i<m;i++)
+				{
+					if( car[i][0] == 1) 
+						{car[i][1]++;
+							if( car[i][1]>=5) 
+								{ car[i][0] = 0;
+									car[i][1] = 0;
+									}
+									}
+									}
+			for(i=0;i<m;i++)
+				{
+				if(car[i][0] == 1)
+					{ ocars++;
+						}
+				else
+					{
+						w_cars++;
+						}
+						}
+			printf("after %d min", c);
+			printf("Is there any new passengers?");
+			scanf("%d",&ch1);
+			if (ch1 == 1)
+				{
+					printf("enter the no of passengers\n");
+					scanf("%d",&n);
+					w_pass = w_pass + n;
+					}
+			for(i=0;i<m;i++)
+			{
+				if((car[i][0] == 0) && (w_pass > 0))
+				{
+					car[i][0]=1;
+					car[i][1]=0;
+					w_pass--;
+					w_cars--;
+					ocars++;
+					}
+					}
+					
+			
+			printf("no of waiting pass = %d\n no of cars waiting = %d\n no of occupied cars = %d\n", w_pass,w_cars,ocars);
+			ocars = 0;
+			w_cars = 0;
+			printf("want to continue:?");
+			scanf("%d",&checkif);
+        
+			}while(checkif==1);
+			getch();
+			}
+			
+			
